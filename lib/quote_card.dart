@@ -33,45 +33,22 @@ class quoteCard extends StatelessWidget {
         ],
       ),
     );
-    var img = Padding(
-      padding: EdgeInsets.fromLTRB(4, 5, 18, 5),
-      child: Expanded(
-          flex: 4,
-          child: Column(
-            children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(quote.img),
-                radius: 20,
-              ),
-            ],
-          )),
-    );
 
-    var del = Expanded(
-        flex: 1,
-        child: Flex(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextButton.icon(
-              onPressed: delete,
-              // ignore: prefer_const_constructors
-              icon: Icon(
-                Icons.delete,
-                size: 20,
-                color: Colors.redAccent,
-              ),
-              label: const Text(
-                '',
-              ),
-            ),
-          ],
-        ));
+    var del = TextButton.icon(
+      onPressed: delete,
+      // ignore: prefer_const_constructors
+      icon: Icon(
+        Icons.delete,
+        size: 20,
+        color: Colors.redAccent,
+      ),
+      label: const Text('Delete'),
+    );
 
 // here what i will do is i will pass data to the next widget and see what happens next
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, '/description', arguments: {
+        Navigator.pushNamed(context, '/description', arguments: {
           'text': quote.text,
           'author': quote.author,
           'img': quote.img,
@@ -82,15 +59,21 @@ class quoteCard extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
-          child: Hero(
-            tag: 'imp',
-            child: Row(
-              children: <Widget>[
-                img,
-                col,
-                del,
-              ],
-            ),
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(4, 5, 18, 5),
+                child: Hero(
+                  tag: UniqueKey().toString(),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(quote.img),
+                    radius: 20,
+                  ),
+                ),
+              ),
+              col,
+              del,
+            ],
           ),
         ),
       ),
