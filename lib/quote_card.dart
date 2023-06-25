@@ -48,7 +48,7 @@ class quoteCard extends StatelessWidget {
 // here what i will do is i will pass data to the next widget and see what happens next
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, '/description', arguments: {
+        Navigator.pushNamed(context, '/description', arguments: {
           'text': quote.text,
           'author': quote.author,
           'img': quote.img,

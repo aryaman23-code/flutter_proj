@@ -25,7 +25,7 @@ class _DescriptionState extends State<Description> {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/');
+          Navigator.pop(context, '/');
         },
         child: Center(
           child: Column(
